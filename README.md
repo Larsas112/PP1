@@ -71,15 +71,27 @@ Fill out the following table, mapping decimal numbers `0` through `15` to their 
 |---------|------------------------|
 | 0       | 0000                   |
 | 1       | 0001                   |
-| ...     | ...                    |
-| 15      | ????                   |
+|2    |0010|
+|3 	|0011|
+|4  	|0100|
+|5	   |0101|
+|6   	|0110|
+|7	   |0111|
+|8	   |1000|
+|9	   |1001|
+|10	|1010|
+|11	|1011|
+|12	|1100|
+|13	|1101|
+|14   |1110|
+|15	|1111|
 
 **How many binary digits (bits) are needed?**
 
 Explain how to calculate the number of bits required:
 <details>
 <summary>Your Answer</summary>
-Erase this text and write your answer here!
+Die Anzahl der darstellbaren ganzen Zahlen (x) ergibt sich aus der Formel x = 2^n - 1. Umgestellt erhalten wir dafür den Logarithmus zur Basis 2 von x+1, was für einen beispielwert 15 eine benötigte Bitanzahl von 4 ergibt.
 </details>
 
 ---
@@ -107,13 +119,44 @@ Refer to the truth table of a 1-bit full adder:
 #### Your Task
 Create a truth table for a **2-bit adder** without carry-in. What are the possible inputs and outputs?
 
->   Your
->
->   table
->
->   goes
->
->   here!
+|   A   |   B   |  Summe  |
+|-------|-------|---------|
+|   0   |   0   |    0    |
+|   0   |   1   |    1    |
+|   0   |   2   |    2    |
+|   0   |   3   |    3    |
+|   1   |   0   |    1    |
+|   1   |   1   |    2    |
+|   1   |   2   |    3    |
+|   1   |   3   |    4    |
+|   2   |   0   |    2    |
+|   2   |   1   |    3    |
+|   2   |   2   |    4    |
+|   2   |   3   |    5    |
+|   3   |   0   |    3    |
+|   3   |   1   |    4    |
+|   3   |   2   |    5    |
+|   3   |   3   |    6    |
+
+
+| A1 | A0 | B1 | B0 |  S1   |  S0   |
+|----|----|----|----|-------|-------|
+| 0  | 0  | 0  | 0  |   0   |   0   |
+| 0  | 0  | 0  | 1  |   0   |   1   |  
+| 0  | 0  | 1  | 0  |   1   |   0   |
+| 0  | 0  | 1  | 1  |   1   |   1   |
+| 0  | 1  | 0  | 0  |   0   |   1   |
+| 0  | 1  | 0  | 1  |   1   |   0   |
+| 0  | 1  | 1  | 0  |   1   |   1   |
+| 0  | 1  | 1  | 1  |   0   |   0   |
+| 1  | 0  | 0  | 0  |   1   |   0   |
+| 1  | 0  | 0  | 1  |   1   |   1   |
+| 1  | 0  | 1  | 0  |   0   |   0   |
+| 1  | 0  | 1  | 1  |   0   |   1   |
+| 1  | 1  | 0  | 0  |   1   |   1   |
+| 1  | 1  | 0  | 1  |   0   |   0   |
+| 1  | 1  | 1  | 0  |   0   |   1   |
+| 1  | 1  | 1  | 1  |   1   |   0   |
 
 ---
 
@@ -125,15 +168,37 @@ Use the [K-Map method](https://github.com/STEMgraph/4b957490-badf-4264-b9f2-1b5a
 3. Combine them using OR gates
 4. Minimize the equations
 
+| A1 | A0 | B1 | B0 |  S1   |  S0   |
+|----|----|----|----|-------|-------|
+| 0  | 0  | 0  | 0  |   0   |   0   |
+| 0  | 0  | 0  | 1  |   0   |   1   |  S0 = B0 * !B1 * !A0 * !A1
+| 0  | 0  | 1  | 0  |   1   |   0   |  S1 = !B0 * B1 * !A0 * !A1
+| 0  | 0  | 1  | 1  |   1   |   1   |  S0 = B0 * B1 * !A0 * !A1
+| 0  | 1  | 0  | 0  |   0   |   1   |
+| 0  | 1  | 0  | 1  |   1   |   0   |
+| 0  | 1  | 1  | 0  |   1   |   1   |
+| 0  | 1  | 1  | 1  |   0   |   0   |
+| 1  | 0  | 0  | 0  |   1   |   0   |
+| 1  | 0  | 0  | 1  |   1   |   1   |
+| 1  | 0  | 1  | 0  |   0   |   0   |
+| 1  | 0  | 1  | 1  |   0   |   1   |
+| 1  | 1  | 0  | 0  |   1   |   1   |
+| 1  | 1  | 0  | 1  |   0   |   0   |
+| 1  | 1  | 1  | 0  |   0   |   1   |
+| 1  | 1  | 1  | 1  |   1   |   0   |
+
+S0 = (B0 + A0) * !(B0 * A0) 
+S1 = (!A1 * !B1 * A0 * B0) + (!A1 * B1 * !(A0 * B0)) + (A1 * !B1 * !(A0 * B0))
+
+
 <details>
 <summary>The final functions</summary>
 
-Q<sub>0</sub> = .......
+Q<sub>0</sub> = (B0 + A0) * !(B0 * A0)
 
-Q<sub>1</sub> = .......
+Q<sub>1</sub> = (!A1 * !B1 * A0 * B0) + (!A1 * B1 * !(A0 * B0)) + (A1 * !B1 * !(A0 * B0))
 
-C<sub>out</sub> = .......
-
+C<sub>out</sub> = A0 * B0
 </details>
 
 ---

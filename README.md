@@ -204,7 +204,7 @@ C<sub>out</sub> = A0 * B0
 ---
 
 ### Task 4: Circuit Implementation
-Using your Boolean equations, build a logic network in [CircuitVerse](https://circuitverse.org) that implements at least one bit of the adder.
+Using your Boolean equations, build a logic network in [CircuitVerse](https:/circuitverse/.org) that implements at least one bit of the adder.
 
 <details>
 <summary>Your solution</summary>

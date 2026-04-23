@@ -209,6 +209,8 @@ Using your Boolean equations, build a logic network in [CircuitVerse](https:/cir
 <details>
 <summary>Your solution</summary>
 A share link to your solution goes here: <a href=".................">Link!</a>
+   <img width="572" height="233" alt="image" src="https://github.com/user-attachments/assets/e49fbe96-48bb-487c-b638-36a6ecb25a92" />
+
 </details>
 
 ---
